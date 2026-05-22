@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Sunvoz — our mission, values, and commitment to sustainable, nature-inspired home essentials.">
+    <title>About Us | Sunvoz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='8' fill='%23C4A35A'/></svg>">
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+        <a href="index.html" class="logo" aria-label="Sunvoz Home">
+            <svg class="logo-sun" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                <circle cx="16" cy="16" r="7" fill="#C4A35A"/>
+                <g stroke="#C4A35A" stroke-width="2" stroke-linecap="round">
+                    <line x1="16" y1="1" x2="16" y2="5"/><line x1="16" y1="27" x2="16" y2="31"/>
+                    <line x1="1" y1="16" x2="5" y2="16"/><line x1="27" y1="16" x2="31" y2="16"/>
+                    <line x1="5.4" y1="5.4" x2="8.2" y2="8.2"/><line x1="23.8" y1="23.8" x2="26.6" y2="26.6"/>
+                    <line x1="5.4" y1="26.6" x2="8.2" y2="23.8"/><line x1="23.8" y1="8.2" x2="26.6" y2="5.4"/>
+                </g>
+            </svg>
+            <span class="logo-text">Sunvoz</span>
+        </a>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html" class="nav-link" data-page="home">Home</a>
+            <a href="products.html" class="nav-link" data-page="shop">Shop</a>
+            <a href="about.html" class="nav-link active" data-page="about">About</a>
+            <a href="blog.html" class="nav-link" data-page="blog">Blog</a>
+        </nav>
+        <div class="nav-actions">
+            <div class="lang-switcher" id="langSwitcher">
+                <button class="lang-btn" id="langBtn" aria-label="Change Language">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    <span>EN</span>
+                    <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" class="lang-option active" data-lang="en">English</a>
+                    <a href="#" class="lang-option" data-lang="vi">Tiếng Việt</a>
+                </div>
+            </div>
+            <button class="search-btn" id="searchToggle" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+            <a href="cart.html" class="nav-cart-btn" id="navCartBtn" aria-label="Shopping Cart">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<!-- ========== BREADCRUMB ========== -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list">
+            <li><a href="index.html">Home</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </li>
+            <li class="breadcrumb-current" aria-current="page">About Us</li>
+        </ol>
+    </div>
+</nav>
+
+<!-- ========== ABOUT HERO ========== -->
+<section class="about-hero" id="aboutHero">
+    <!-- Decorative background SVG -->
+    <div class="about-hero-bg" aria-hidden="true">
+        <svg class="about-hero-svg" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <!-- Large leaf left -->
+            <path d="M-50 400C-50 400 100 200 250 180C400 160 350 350 200 380C50 410 -50 400 -50 400Z" fill="#D8F3DC" opacity="0.3"/>
+            <!-- Large leaf right -->
+            <path d="M1250 400C1250 400 1100 200 950 180C800 160 850 350 1000 380C1150 410 1250 400 1250 400Z" fill="#D8F3DC" opacity="0.2"/>
+            <!-- Sun rays backdrop -->
+            <circle cx="600" cy="120" r="80" fill="#C4A35A" opacity="0.06"/>
+            <circle cx="600" cy="120" r="50" fill="#C4A35A" opacity="0.08"/>
+            <circle cx="600" cy="120" r="25" fill="#C4A35A" opacity="0.1"/>
+            <!-- Scattered circles -->
+            <circle cx="200" cy="100" r="4" fill="#A7C4A0" opacity="0.3"/>
+            <circle cx="400" cy="60" r="3" fill="#C4A35A" opacity="0.25"/>
+            <circle cx="800" cy="80" r="4" fill="#52B788" opacity="0.2"/>
+            <circle cx="1000" cy="120" r="3" fill="#C4A35A" opacity="0.3"/>
+            <circle cx="150" cy="250" r="5" fill="#D8F3DC" opacity="0.4"/>
+            <circle cx="1050" cy="280" r="5" fill="#D8F3DC" opacity="0.3"/>
+            <!-- Organic curves -->
+            <path d="M0 350Q300 280 600 320Q900 360 1200 300" stroke="#A7C4A0" stroke-width="1" fill="none" opacity="0.15"/>
+            <path d="M0 370Q300 310 600 340Q900 370 1200 320" stroke="#D8F3DC" stroke-width="1.5" fill="none" opacity="0.2"/>
+        </svg>
+    </div>
+    <div class="container about-hero-content">
+        <h1 class="about-hero-title animate-on-scroll">Our Story</h1>
+        <p class="about-hero-subtitle animate-on-scroll">From a small seed of an idea to a growing community of mindful homemakers — discover the journey that brought Sunvoz to life and the values that guide everything we do.</p>
+    </div>
+</section>
+
+<!-- ========== MISSION & VISION ========== -->
+<section class="section about-mv-section" id="missionVision">
+    <div class="container">
+        <div class="mv-grid">
+            <div class="mv-card animate-on-scroll">
+                <div class="mv-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </div>
+                <h3>Our Mission</h3>
+                <p>To make sustainable living effortless and beautiful. We curate and craft home essentials that replace single-use and harmful products with nature-inspired alternatives — without compromising on design, quality, or functionality.</p>
+            </div>
+            <div class="mv-card animate-on-scroll">
+                <div class="mv-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+                <h3>Our Vision</h3>
+                <p>A world where every home is a sanctuary of sustainability. We envision a future where choosing eco-friendly products is the norm, not the exception — where nature and modern living exist in perfect harmony.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== BRAND VALUES ========== -->
+<section class="section about-values-section" id="values">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">What We Stand For</h2>
+            <p class="section-subtitle">Three pillars that define everything we create</p>
+        </div>
+        <div class="values-grid">
+            <div class="value-card animate-on-scroll">
+                <div class="value-icon">
+                    <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+                        <!-- Leaf with roots -->
+                        <path d="M32 8C32 8 50 18 50 35C50 46 42 54 32 54C22 54 14 46 14 35C14 18 32 8 32 8Z" fill="#D8F3DC" opacity="0.5"/>
+                        <path d="M32 16V48" stroke="#2D6A4F" stroke-width="2"/>
+                        <path d="M32 24L24 30" stroke="#2D6A4F" stroke-width="1.5"/>
+                        <path d="M32 30L40 36" stroke="#2D6A4F" stroke-width="1.5"/>
+                        <path d="M32 36L24 42" stroke="#2D6A4F" stroke-width="1.5"/>
+                        <circle cx="32" cy="12" r="3" fill="#C4A35A" opacity="0.5"/>
+                    </svg>
+                </div>
+                <h3>Sustainable Sourcing</h3>
+                <p>Every material we use is carefully vetted for its environmental impact. From FSC-certified bamboo to organic cotton and recycled metals, we trace every ingredient back to its source to ensure ethical and sustainable practices throughout our supply chain.</p>
+            </div>
+            <div class="value-card animate-on-scroll">
+                <div class="value-icon">
+                    <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+                        <!-- Handshake / Partnership -->
+                        <circle cx="32" cy="32" r="24" fill="#D8F3DC" opacity="0.3"/>
+                        <path d="M16 36C16 36 24 28 32 28C40 28 48 36 48 36" stroke="#2D6A4F" stroke-width="2" fill="none"/>
+                        <path d="M22 30C22 30 26 22 32 22C38 22 42 30 42 30" stroke="#52B788" stroke-width="1.5" fill="none"/>
+                        <circle cx="32" cy="20" r="4" fill="#C4A35A" opacity="0.4"/>
+                        <path d="M20 40L28 44L36 40L44 44" stroke="#2D6A4F" stroke-width="1.5" fill="none"/>
+                    </svg>
+                </div>
+                <h3>Artisan Partnerships</h3>
+                <p>We work directly with skilled artisans and small workshops around the world, ensuring fair wages and preserving traditional craftsmanship. Each product carries the soul and expertise of the hands that made it — connecting you to real people and real stories.</p>
+            </div>
+            <div class="value-card animate-on-scroll">
+                <div class="value-icon">
+                    <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+                        <!-- Zero Waste circle -->
+                        <circle cx="32" cy="32" r="22" stroke="#2D6A4F" stroke-width="2" fill="none" stroke-dasharray="4 3"/>
+                        <path d="M32 14L32 50" stroke="#52B788" stroke-width="1" opacity="0.3"/>
+                        <path d="M14 32L50 32" stroke="#52B788" stroke-width="1" opacity="0.3"/>
+                        <path d="M22 18L32 32L42 18" stroke="#2D6A4F" stroke-width="1.5" fill="none"/>
+                        <path d="M22 46L32 32L42 46" stroke="#A7C4A0" stroke-width="1.5" fill="none"/>
+                        <circle cx="32" cy="32" r="6" fill="#D8F3DC" opacity="0.5"/>
+                        <circle cx="32" cy="32" r="3" fill="#2D6A4F" opacity="0.3"/>
+                    </svg>
+                </div>
+                <h3>Zero Waste Promise</h3>
+                <p>We're committed to eliminating waste at every stage — from production to packaging to delivery. All our packaging is 100% compostable or recyclable, and we actively offset our carbon footprint to achieve truly carbon-neutral operations.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== TIMELINE ========== -->
+<section class="section about-timeline-section" id="timeline">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Our Journey</h2>
+            <p class="section-subtitle">Key milestones in the Sunvoz story</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-line" aria-hidden="true"></div>
+
+            <div class="timeline-item timeline-left animate-on-scroll">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2020</span>
+                    <h4>Founded</h4>
+                    <p>Sunvoz was born from a simple idea: home products shouldn't harm the planet. Our founders started with a kitchen table and a dream.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item timeline-right animate-on-scroll">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2021</span>
+                    <h4>First Collection</h4>
+                    <p>Launched our inaugural Kitchen Essentials line — 25 products that quickly became customer favorites and set the standard for what Sunvoz would become.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item timeline-left animate-on-scroll">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2022</span>
+                    <h4>10,000 Customers</h4>
+                    <p>Reached our first major milestone of 10,000 happy customers. Expanded into Bath & Body and Living Room collections.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item timeline-right animate-on-scroll">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2023</span>
+                    <h4>Carbon Neutral</h4>
+                    <p>Achieved full carbon neutrality across all operations — from manufacturing to shipping. Partnered with global reforestation programs.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item timeline-left animate-on-scroll">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2024</span>
+                    <h4>International Expansion</h4>
+                    <p>Began shipping to 25+ countries worldwide. Opened partnerships with artisan communities across Southeast Asia and South America.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item timeline-right animate-on-scroll">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2025</span>
+                    <h4>Community Program</h4>
+                    <p>Launched the Sunvoz Community Program — empowering local communities through educational workshops and sustainable living initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== TEAM SECTION ========== -->
+<section class="section about-team-section" id="team">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Meet the Team</h2>
+            <p class="section-subtitle">The passionate people behind Sunvoz</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card animate-on-scroll">
+                <div class="team-avatar" style="background-color: #2D6A4F;">
+                    <span>LN</span>
+                </div>
+                <h4 class="team-name">Linh Nguyen</h4>
+                <span class="team-role">Founder & CEO</span>
+                <p class="team-bio">A lifelong nature enthusiast with a background in sustainable design. Linh founded Sunvoz to bridge the gap between eco-consciousness and everyday convenience.</p>
+            </div>
+            <div class="team-card animate-on-scroll">
+                <div class="team-avatar" style="background-color: #C4A35A;">
+                    <span>MT</span>
+                </div>
+                <h4 class="team-name">Marcus Torres</h4>
+                <span class="team-role">Head of Product</span>
+                <p class="team-bio">With 12 years in product design, Marcus ensures every Sunvoz item is both beautiful and functional. He's obsessed with the details that make products feel premium.</p>
+            </div>
+            <div class="team-card animate-on-scroll">
+                <div class="team-avatar" style="background-color: #52B788;">
+                    <span>SK</span>
+                </div>
+                <h4 class="team-name">Sofia Kim</h4>
+                <span class="team-role">Sustainability Director</span>
+                <p class="team-bio">An environmental scientist by training, Sofia leads our sustainability initiatives — from supply chain auditing to carbon offset programs and zero-waste packaging.</p>
+            </div>
+            <div class="team-card animate-on-scroll">
+                <div class="team-avatar" style="background-color: #A7C4A0;">
+                    <span>JW</span>
+                </div>
+                <h4 class="team-name">James Walker</h4>
+                <span class="team-role">Community Manager</span>
+                <p class="team-bio">James connects Sunvoz with its growing community of mindful homemakers. He manages partnerships, events, and our ambassador program worldwide.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== STATS COUNTER ========== -->
+<section class="section about-stats-section" id="aboutStats">
+    <div class="container">
+        <div class="about-stats-grid">
+            <div class="about-stat animate-on-scroll">
+                <span class="about-stat-number" data-count="500">0</span><span class="about-stat-suffix">+</span>
+                <span class="about-stat-label">Products</span>
+            </div>
+            <div class="about-stat animate-on-scroll">
+                <span class="about-stat-number" data-count="50">0</span><span class="about-stat-suffix">k+</span>
+                <span class="about-stat-label">Happy Customers</span>
+            </div>
+            <div class="about-stat animate-on-scroll">
+                <span class="about-stat-number" data-count="25">0</span><span class="about-stat-suffix">+</span>
+                <span class="about-stat-label">Countries</span>
+            </div>
+            <div class="about-stat animate-on-scroll">
+                <span class="about-stat-number" data-count="100">0</span><span class="about-stat-suffix">%</span>
+                <span class="about-stat-label">Eco-Friendly</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-newsletter">
+            <div class="newsletter-content">
+                <h3>Join the Sunvoz Community</h3>
+                <p>Subscribe for eco-living tips, new arrivals, and exclusive offers.</p>
+            </div>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+        <div class="footer-grid">
+            <div class="footer-col footer-brand-col">
+                <a href="index.html" class="footer-logo">
+                    <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#C4A35A"/><g stroke="#C4A35A" stroke-width="2" stroke-linecap="round"><line x1="16" y1="1" x2="16" y2="5"/><line x1="16" y1="27" x2="16" y2="31"/><line x1="1" y1="16" x2="5" y2="16"/><line x1="27" y1="16" x2="31" y2="16"/><line x1="5.4" y1="5.4" x2="8.2" y2="8.2"/><line x1="23.8" y1="23.8" x2="26.6" y2="26.6"/><line x1="5.4" y1="26.6" x2="8.2" y2="23.8"/><line x1="23.8" y1="8.2" x2="26.6" y2="5.4"/></g></svg>
+                    <span>Sunvoz</span>
+                </a>
+                <p class="footer-desc">Nature-inspired home essentials for mindful living. Sustainable, beautiful, and functional.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+                    <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                    <a href="#" aria-label="Pinterest"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12a4 4 0 118 0c0 4-3 6-3 6"/><line x1="12" y1="16" x2="10" y2="22"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="products.html">All Products</a></li>
+                    <li><a href="products.html?category=kitchen">Kitchen</a></li>
+                    <li><a href="products.html?category=bathroom">Bath & Body</a></li>
+                    <li><a href="products.html?category=living">Living Room</a></li>
+                    <li><a href="products.html?category=garden">Garden</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sunvoz. All rights reserved. Crafted with 🌿 for a sustainable future.</p>
+        </div>
+    </div>
+</footer>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+(function() {
+    'use strict';
+
+    // ======== SCROLL ANIMATIONS ========
+    function setupScrollAnimations() {
+        var elements = document.querySelectorAll('.animate-on-scroll');
+        if (!('IntersectionObserver' in window)) {
+            elements.forEach(function(el) { el.classList.add('animated'); });
+            return;
+        }
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        elements.forEach(function(el) { observer.observe(el); });
+    }
+
+    // ======== COUNTER ANIMATION ========
+    function animateCounters() {
+        var counters = document.querySelectorAll('.about-stat-number[data-count]');
+        counters.forEach(function(counter) {
+            var target = parseInt(counter.getAttribute('data-count'), 10);
+            if (target === 0) return;
+            if (counter.dataset.animated === 'true') return;
+
+            var rect = counter.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                counter.dataset.animated = 'true';
+                var duration = 2000;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    counter.textContent = Math.floor(eased * target);
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        counter.textContent = target;
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+        });
+    }
+
+    // ======== INIT ========
+    document.addEventListener('DOMContentLoaded', function() {
+        setupScrollAnimations();
+        window.addEventListener('scroll', animateCounters);
+        animateCounters();
+    });
+
+})();
+</script>
+
+</body>
+</html>

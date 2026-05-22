@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View product details on Sunvoz. High quality, sustainable home gadgets and accessories.">
+    <title>Product Details | Sunvoz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/product-detail.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='8' fill='%23C4A35A'/></svg>">
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+        <a href="index.html" class="logo" aria-label="Sunvoz Home">
+            <svg class="logo-sun" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                <circle cx="16" cy="16" r="7" fill="#C4A35A"/>
+                <g stroke="#C4A35A" stroke-width="2" stroke-linecap="round">
+                    <line x1="16" y1="1" x2="16" y2="5"/><line x1="16" y1="27" x2="16" y2="31"/>
+                    <line x1="1" y1="16" x2="5" y2="16"/><line x1="27" y1="16" x2="31" y2="16"/>
+                    <line x1="5.4" y1="5.4" x2="8.2" y2="8.2"/><line x1="23.8" y1="23.8" x2="26.6" y2="26.6"/>
+                    <line x1="5.4" y1="26.6" x2="8.2" y2="23.8"/><line x1="23.8" y1="8.2" x2="26.6" y2="5.4"/>
+                </g>
+            </svg>
+            <span class="logo-text">Sunvoz</span>
+        </a>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html" class="nav-link" data-page="home">Home</a>
+            <a href="products.html" class="nav-link active" data-page="shop">Shop</a>
+            <a href="about.html" class="nav-link" data-page="about">About</a>
+            <a href="blog.html" class="nav-link" data-page="blog">Blog</a>
+        </nav>
+        <div class="nav-actions">
+            <div class="lang-switcher" id="langSwitcher">
+                <button class="lang-btn" id="langBtn" aria-label="Change Language">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    <span>EN</span>
+                    <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" class="lang-option active" data-lang="en">English</a>
+                    <a href="#" class="lang-option" data-lang="vi">Tiếng Việt</a>
+                </div>
+            </div>
+            <button class="search-btn" id="searchToggle" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+            <a href="cart.html" class="nav-cart-btn" id="navCartBtn" aria-label="Shopping Cart">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main style="padding-top: 72px;">
+    <!-- Breadcrumb -->
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="products.html">Shop</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current" id="breadcrumbProductName">Product Loading...</span>
+        </nav>
+    </div>
+
+    <!-- Product Detail Section -->
+    <section class="section-product-detail">
+        <div class="container">
+            <div id="productDetailContainer">
+                <!-- Loading State / Rendered dynamically by JS -->
+                <div class="detail-loading">
+                    <div class="spinner"></div>
+                    <p>Loading product details...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Tabs Section -->
+    <section class="section-product-tabs">
+        <div class="container">
+            <div class="tabs-container">
+                <div class="tabs-header" role="tablist">
+                    <button class="tab-button active" role="tab" aria-selected="true" data-tab="description">Description &amp; Features</button>
+                    <button class="tab-button" role="tab" aria-selected="false" data-tab="details">Specifications &amp; Materials</button>
+                    <button class="tab-button" role="tab" aria-selected="false" data-tab="reviews">Reviews (<span id="tabReviewCount">0</span>)</button>
+                </div>
+                <div class="tabs-content">
+                    <div class="tab-pane active" id="tab-description" role="tabpanel">
+                        <div class="pane-inner">
+                            <h3 class="pane-title">Product Description</h3>
+                            <p class="pane-desc" id="detailFullDesc">Description goes here...</p>
+                            <h4 class="features-title">Key Features</h4>
+                            <ul class="features-list" id="detailFeaturesList">
+                                <!-- Rendered dynamically by JS -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-details" role="tabpanel">
+                        <div class="pane-inner">
+                            <h3 class="pane-title">Specifications &amp; Material Sourcing</h3>
+                            <table class="specs-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Material</th>
+                                        <td id="detailMaterial">Eco-friendly materials</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Dimensions</th>
+                                        <td id="detailDimensions">Standard size</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Care Instructions</th>
+                                        <td>Hand wash with mild soap recommended. Avoid prolonged exposure to direct sunlight.</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Certifications</th>
+                                        <td>OEKO-TEX Certified / FSC Sustainably Sourced</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-reviews" role="tabpanel">
+                        <div class="pane-inner">
+                            <h3 class="pane-title">Customer Reviews</h3>
+                            <div class="reviews-summary">
+                                <div class="rating-number" id="detailRatingNumber">4.8</div>
+                                <div class="rating-stars-wrap">
+                                    <div class="stars-large" id="detailStarsLarge">★★★★★</div>
+                                    <p>Based on <span id="detailReviewCountText">0</span> verified reviews</p>
+                                </div>
+                            </div>
+                            <div class="reviews-list" id="detailReviewsList">
+                                <!-- Mock reviews rendered dynamically by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products Section -->
+    <section class="section related-products">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Related Products</h2>
+                <p class="section-subtitle">Complementary items from the same collection</p>
+            </div>
+            <div class="products-grid" id="relatedProductsGrid">
+                <!-- Rendered dynamically by JS -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-newsletter">
+            <div class="newsletter-content">
+                <h3>Join the Sunvoz Community</h3>
+                <p>Subscribe for eco-living tips, new arrivals, and exclusive offers.</p>
+            </div>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+        <div class="footer-grid">
+            <div class="footer-col footer-brand-col">
+                <a href="index.html" class="footer-logo">
+                    <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#C4A35A"/><g stroke="#C4A35A" stroke-width="2" stroke-linecap="round"><line x1="16" y1="1" x2="16" y2="5"/><line x1="16" y1="27" x2="16" y2="31"/><line x1="1" y1="16" x2="5" y2="16"/><line x1="27" y1="16" x2="31" y2="16"/><line x1="5.4" y1="5.4" x2="8.2" y2="8.2"/><line x1="23.8" y1="23.8" x2="26.6" y2="26.6"/><line x1="5.4" y1="26.6" x2="8.2" y2="23.8"/><line x1="23.8" y1="8.2" x2="26.6" y2="5.4"/></g></svg>
+                    <span>Sunvoz</span>
+                </a>
+                <p class="footer-desc">Nature-inspired home essentials for mindful living. Sustainable, beautiful, and functional.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+                    <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                    <a href="#" aria-label="Pinterest"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12a4 4 0 118 0c0 4-3 6-3 6"/><line x1="12" y1="16" x2="10" y2="22"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="products.html">All Products</a></li>
+                    <li><a href="products.html?category=kitchen">Kitchen</a></li>
+                    <li><a href="products.html?category=bathroom">Bath &amp; Body</a></li>
+                    <li><a href="products.html?category=living">Living Room</a></li>
+                    <li><a href="products.html?category=garden">Garden</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping &amp; Returns</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sunvoz. All rights reserved. Crafted with 🌿 for a sustainable future.</p>
+        </div>
+    </div>
+</footer>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/product-detail.js"></script>
+</body>
+</html>

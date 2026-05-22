@@ -1,0 +1,12 @@
+# OS temporary files
+.DS_Store
+Thumbs.db
+
+# IDES
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
