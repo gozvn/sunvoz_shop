@@ -101,6 +101,28 @@
     var navLinks = document.getElementById('navLinks');
     var navbarEl = document.getElementById('navbar');
     if (hamburger && navLinks) {
+        // Prepend header
+        var menuHeader = document.createElement('div');
+        menuHeader.className = 'mobile-menu-header';
+        menuHeader.innerHTML = 
+            '<a href="index.html" class="mobile-menu-logo">' +
+            '    <svg class="logo-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>' +
+            '    <span class="logo-text">SUNVOZ</span>' +
+            '</a>';
+        navLinks.insertBefore(menuHeader, navLinks.firstChild);
+
+        // Append footer
+        var menuFooter = document.createElement('div');
+        menuFooter.className = 'mobile-menu-footer';
+        menuFooter.innerHTML = 
+            '<div class="mobile-menu-tagline">🌿 Sống Xanh cùng Sunvoz — Cung cấp các sản phẩm gia dụng thân thiện với môi trường.</div>' +
+            '<div class="mobile-menu-socials">' +
+            '    <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>' +
+            '    <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg></a>' +
+            '    <a href="#" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22a9 9 0 01-1.91-8.39c.56-2.51 1.91-5.32 3.66-7.39a11.19 11.19 0 018.66-3.87c4.61.16 7.62 3.32 7.54 7.63-.09 4.63-3 8.39-7.23 8.39-1.9 0-3.32-.95-3.66-1.91l-1.09 4.3c-.39 1.55-1.46 3.1-2.22 4.1a9 9 0 01-3.79-.87z"/></svg></a>' +
+            '</div>';
+        navLinks.appendChild(menuFooter);
+
         hamburger.addEventListener('click', function () {
             var backdrop = document.getElementById('drawerBackdrop');
             var isOpen = navLinks.classList.toggle('open');
@@ -130,6 +152,57 @@
             });
         });
     }
+
+    /* ========== Reusable Modal System (SunvozModal) ========== */
+    window.SunvozModal = {
+        show: function (modalId) {
+            var modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+        },
+        close: function (modalId) {
+            var modal;
+            if (modalId) {
+                modal = document.getElementById(modalId);
+            } else {
+                modal = document.querySelector('.modal-overlay.active');
+            }
+            if (!modal) return;
+            modal.classList.remove('active');
+            
+            // Check if there are other active modals or drawers open before removing scroll lock
+            var activeModals = document.querySelectorAll('.modal-overlay.active').length;
+            var drawerOpen = document.body.classList.contains('drawer-open');
+            if (activeModals === 0 && !drawerOpen) {
+                document.body.classList.remove('modal-open');
+            }
+        },
+        init: function () {
+            var self = this;
+            // Delegate close triggers inside modals (both X button and Cancel/Dismiss buttons)
+            document.addEventListener('click', function (e) {
+                if (e.target.closest('.modal-close-trigger') || e.target.classList.contains('modal-close-trigger') || e.target.closest('.modal-close')) {
+                    var modal = e.target.closest('.modal-overlay');
+                    if (modal) {
+                        self.close(modal.id);
+                    }
+                }
+                // Close modal if clicked outside container (on the backdrop overlay itself)
+                if (e.target.classList.contains('modal-overlay')) {
+                    self.close(e.target.id);
+                }
+            });
+            // Escape key support to close open modals
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    self.close();
+                }
+            });
+        }
+    };
+    window.SunvozModal.init();
+
 
     /* ========== Language Translation Settings ========== */
     window.SunvozTranslations = {
