@@ -99,11 +99,13 @@
     /* ========== Mobile Menu ========== */
     var hamburger = document.getElementById('hamburger');
     var navLinks = document.getElementById('navLinks');
+    var navbarEl = document.getElementById('navbar');
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', function () {
             var backdrop = document.getElementById('drawerBackdrop');
             var isOpen = navLinks.classList.toggle('open');
             hamburger.classList.toggle('active', isOpen);
+            if (navbarEl) navbarEl.classList.toggle('menu-open', isOpen);
             
             if (isOpen) {
                 if (backdrop) backdrop.classList.add('active');
@@ -121,6 +123,7 @@
             link.addEventListener('click', function () {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('open');
+                if (navbarEl) navbarEl.classList.remove('menu-open');
                 var backdrop = document.getElementById('drawerBackdrop');
                 if (backdrop) backdrop.classList.remove('active');
                 document.body.classList.remove('drawer-open');
@@ -560,6 +563,8 @@
                         hamburger.classList.remove('active');
                         navLinks.classList.remove('open');
                     }
+                    var navbarEl = document.getElementById('navbar');
+                    if (navbarEl) navbarEl.classList.remove('menu-open');
                 });
             }
 
@@ -572,6 +577,8 @@
                         hamburger.classList.remove('active');
                         navLinks.classList.remove('open');
                     }
+                    var navbarEl = document.getElementById('navbar');
+                    if (navbarEl) navbarEl.classList.remove('menu-open');
                 }
             });
 
@@ -624,6 +631,8 @@
                     hamburger.classList.remove('active');
                     navLinks.classList.remove('open');
                 }
+                var navbarEl = document.getElementById('navbar');
+                if (navbarEl) navbarEl.classList.remove('menu-open');
             }
         },
 
