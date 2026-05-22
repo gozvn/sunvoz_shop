@@ -653,13 +653,17 @@
         var rightBtn = document.getElementById('scrollRight');
         if (!track || !leftBtn || !rightBtn) return;
 
-        var scrollAmount = 320;
-
         leftBtn.addEventListener('click', function() {
-            track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            var card = track.querySelector('.product-card');
+            var gap = parseFloat(window.getComputedStyle(track).gap) || 24;
+            var amount = card ? card.offsetWidth + gap : 320;
+            track.scrollBy({ left: -amount, behavior: 'smooth' });
         });
         rightBtn.addEventListener('click', function() {
-            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            var card = track.querySelector('.product-card');
+            var gap = parseFloat(window.getComputedStyle(track).gap) || 24;
+            var amount = card ? card.offsetWidth + gap : 320;
+            track.scrollBy({ left: amount, behavior: 'smooth' });
         });
 
         // Update arrow visibility

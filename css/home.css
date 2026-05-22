@@ -613,8 +613,8 @@
 }
 
 .new-arrivals-track .product-card {
-    min-width: 280px;
-    max-width: 300px;
+    width: calc((100% - (3 * 24px)) / 4);
+    min-width: calc((100% - (3 * 24px)) / 4);
     flex-shrink: 0;
     scroll-snap-align: start;
 }
@@ -941,6 +941,11 @@
 
 /* Tablet */
 @media (max-width: 1024px) {
+    .new-arrivals-track .product-card {
+        width: calc((100% - (2 * 24px)) / 3);
+        min-width: calc((100% - (2 * 24px)) / 3);
+    }
+
     .hero {
         padding: 60px 0 40px;
     }
@@ -1106,8 +1111,13 @@
         gap: 16px;
     }
 
+    .new-arrivals-track {
+        gap: 16px;
+    }
+
     .new-arrivals-track .product-card {
-        min-width: 260px;
+        width: calc((100% - 16px) / 2);
+        min-width: calc((100% - 16px) / 2);
     }
 
     .scroll-arrow-left {
@@ -1193,8 +1203,13 @@
         padding: 6px 16px 16px 16px; /* Aligns bottom spacing to 16px (cách đều lề trái và dưới) */
     }
 
+    .new-arrivals-track {
+        gap: 12px;
+    }
+
     .new-arrivals-track .product-card {
-        min-width: 240px;
+        width: calc(100% - 40px);
+        min-width: calc(100% - 40px);
     }
 
     .scroll-arrow {
