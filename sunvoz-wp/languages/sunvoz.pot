@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Sunvoz Theme 1.0\n"
+"POT-Creation-Date: 2026-05-23 22:30+0700\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Sunvoz Poedit\n"
+
+#: header.php:12
+msgid "Home"
+msgstr ""
+
+#: header.php:38
+msgid "Change Language"
+msgstr ""
+
+#: header.php:49
+msgid "Search"
+msgstr ""
+
+#: header.php:54
+msgid "Shopping Cart"
+msgstr ""
+
+#: header.php:61
+msgid "Toggle Menu"
+msgstr ""
+
+#: footer.php:12
+msgid "Join Our Community"
+msgstr ""
+
+#: footer.php:13
+msgid "Subscribe to get 10% off your first order and receive eco-living tips."
+msgstr ""
+
+#: footer.php:21
+msgid "Enter your email address"
+msgstr ""
+
+#: footer.php:22
+msgid "Subscribe"
+msgstr ""
+
+#: footer.php:52
+msgid "Shop"
+msgstr ""
+
+#: footer.php:54
+msgid "All Products"
+msgstr ""
+
+#: footer.php:55
+msgid "New Arrivals"
+msgstr ""
+
+#: footer.php:62
+msgid "All rights reserved."
+msgstr ""
+
+#: footer.php:70
+msgid "Close search"
+msgstr ""
+
+#: footer.php:73
+msgid "Search products..."
+msgstr ""
+
+#: footer.php:80
+msgid "Back to top"
+msgstr ""
+
+#: front-page.php:17
+msgid "Nature-Inspired Home Essentials"
+msgstr ""
+
+#: front-page.php:18
+msgid "Live Simply,<br>Live Naturally"
+msgstr ""
+
+#: front-page.php:19
+msgid "Discover thoughtfully crafted home essentials that bring the beauty of nature indoors. Sustainable, beautiful, and designed for mindful living."
+msgstr ""
+
+#: front-page.php:21
+msgid "Shop Collection"
+msgstr ""
+
+#: front-page.php:31
+msgid "Shop by Category"
+msgstr ""
+
+#: front-page.php:48
+msgid "Products"
+msgstr ""
+
+#: front-page.php:61
+msgid "Featured Collection"
+msgstr ""
