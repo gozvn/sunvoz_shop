@@ -222,11 +222,12 @@ document.addEventListener('DOMContentLoaded', function () {
             var cardDate = formatDate(post.date);
 
             var relatedHTML = 
-                '<article class="blog-card reveal">' +
+                '<div class="col reveal">' +
+                '<article class="blog-card h-100">' +
                     '<div class="blog-card-img-wrapper" style="background: ' + post.gradient + '">' +
                         articleSvg +
                     '</div>' +
-                    '<div class="blog-card-body">' +
+                    '<div class="blog-card-body d-flex flex-column">' +
                         '<span class="article-tag">' + post.category + '</span>' +
                         '<h3 class="blog-card-title">' +
                             '<a href="blog-post.html?slug=' + post.slug + '">' + post.title + '</a>' +
@@ -242,7 +243,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>' +
                         '</a>' +
                     '</div>' +
-                '</article>';
+                '</article>' +
+                '</div>';
 
             relatedGrid.insertAdjacentHTML('beforeend', relatedHTML);
         });

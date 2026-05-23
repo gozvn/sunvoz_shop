@@ -83,7 +83,7 @@
     };
 
     /* ========== Navbar Scroll ========== */
-    var navbar = document.getElementById('navbar');
+    var navbar = document.querySelector('.navbar');
     if (navbar) {
         var onScroll = function () {
             if (window.scrollY > 20) {
@@ -99,7 +99,7 @@
     /* ========== Mobile Menu ========== */
     var hamburger = document.getElementById('hamburger');
     var navLinks = document.getElementById('navLinks');
-    var navbarEl = document.getElementById('navbar');
+    var navbarEl = document.querySelector('.navbar');
     if (hamburger && navLinks) {
         // Prepend header
         var menuHeader = document.createElement('div');
@@ -111,11 +111,28 @@
             '</a>';
         navLinks.insertBefore(menuHeader, navLinks.firstChild);
 
+        // Add icons to nav links
+        var navLinkIcons = {
+            home: '<svg class="nav-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+            shop: '<svg class="nav-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+            about: '<svg class="nav-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
+            blog: '<svg class="nav-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>'
+        };
+
+        navLinks.querySelectorAll('.nav-link').forEach(function (link) {
+            var page = link.getAttribute('data-page');
+            if (page && navLinkIcons[page]) {
+                if (!link.querySelector('.nav-link-icon')) {
+                    link.insertAdjacentHTML('afterbegin', navLinkIcons[page] + ' ');
+                }
+            }
+        });
+
         // Append footer
         var menuFooter = document.createElement('div');
         menuFooter.className = 'mobile-menu-footer';
         menuFooter.innerHTML = 
-            '<div class="mobile-menu-tagline">🌿 Sống Xanh cùng Sunvoz — Cung cấp các sản phẩm gia dụng thân thiện với môi trường.</div>' +
+            '<div class="mobile-menu-tagline">🌿 Go Green with Sunvoz — Providing sustainable and eco-friendly home essentials.</div>' +
             '<div class="mobile-menu-socials">' +
             '    <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>' +
             '    <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg></a>' +
@@ -156,49 +173,29 @@
     /* ========== Reusable Modal System (SunvozModal) ========== */
     window.SunvozModal = {
         show: function (modalId) {
-            var modal = document.getElementById(modalId);
-            if (!modal) return;
-            modal.classList.add('active');
-            document.body.classList.add('modal-open');
+            var modalEl = document.getElementById(modalId);
+            if (!modalEl) return;
+            var modal = bootstrap.Modal.getInstance(modalEl);
+            if (!modal) {
+                modal = new bootstrap.Modal(modalEl);
+            }
+            modal.show();
         },
         close: function (modalId) {
-            var modal;
+            var modalEl;
             if (modalId) {
-                modal = document.getElementById(modalId);
+                modalEl = document.getElementById(modalId);
             } else {
-                modal = document.querySelector('.modal-overlay.active');
+                modalEl = document.querySelector('.modal.show');
             }
-            if (!modal) return;
-            modal.classList.remove('active');
-            
-            // Check if there are other active modals or drawers open before removing scroll lock
-            var activeModals = document.querySelectorAll('.modal-overlay.active').length;
-            var drawerOpen = document.body.classList.contains('drawer-open');
-            if (activeModals === 0 && !drawerOpen) {
-                document.body.classList.remove('modal-open');
+            if (!modalEl) return;
+            var modal = bootstrap.Modal.getInstance(modalEl);
+            if (modal) {
+                modal.hide();
             }
         },
         init: function () {
-            var self = this;
-            // Delegate close triggers inside modals (both X button and Cancel/Dismiss buttons)
-            document.addEventListener('click', function (e) {
-                if (e.target.closest('.modal-close-trigger') || e.target.classList.contains('modal-close-trigger') || e.target.closest('.modal-close')) {
-                    var modal = e.target.closest('.modal-overlay');
-                    if (modal) {
-                        self.close(modal.id);
-                    }
-                }
-                // Close modal if clicked outside container (on the backdrop overlay itself)
-                if (e.target.classList.contains('modal-overlay')) {
-                    self.close(e.target.id);
-                }
-            });
-            // Escape key support to close open modals
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') {
-                    self.close();
-                }
-            });
+            // Bootstrap handles close events natively via data attributes
         }
     };
     window.SunvozModal.init();
@@ -225,7 +222,8 @@
             shipping: 'Shipping',
             estTotal: 'Estimated Total',
             free: 'FREE',
-            welcomeNewsletter: 'Welcome to the Sunvoz community! 🌿'
+            welcomeNewsletter: 'Welcome to the Sunvoz community! 🌿',
+            menuTagline: '🌿 Go Green with Sunvoz — Providing sustainable and eco-friendly home essentials.'
         },
         vi: {
             home: 'Trang chủ',
@@ -246,7 +244,8 @@
             shipping: 'Vận chuyển',
             estTotal: 'Tổng ước tính',
             free: 'MIỄN PHÍ',
-            welcomeNewsletter: 'Chào mừng bạn đến với cộng đồng Sunvoz! 🌿'
+            welcomeNewsletter: 'Chào mừng bạn đến với cộng đồng Sunvoz! 🌿',
+            menuTagline: '🌿 Sống Xanh cùng Sunvoz — Cung cấp các sản phẩm gia dụng thân thiện với môi trường.'
         }
     };
 
@@ -280,9 +279,22 @@
                 navLinks.querySelectorAll('.nav-link').forEach(function (link) {
                     var page = link.getAttribute('data-page');
                     if (page && t[page]) {
-                        link.textContent = t[page];
+                        var icon = link.querySelector('.nav-link-icon');
+                        if (icon) {
+                            link.innerHTML = '';
+                            link.appendChild(icon);
+                            link.appendChild(document.createTextNode(' ' + t[page]));
+                        } else {
+                            link.textContent = t[page];
+                        }
                     }
                 });
+            }
+
+            // Translate Mobile Menu Tagline
+            var taglineEl = document.querySelector('.mobile-menu-tagline');
+            if (taglineEl && t.menuTagline) {
+                taglineEl.textContent = t.menuTagline;
             }
 
             // Translate Search Overlay Input placeholder
@@ -415,26 +427,36 @@
             var container = document.getElementById('toastContainer');
             if (!container) {
                 container = document.createElement('div');
-                container.className = 'toast-container';
+                container.className = 'toast-container position-fixed top-0 end-0 p-3';
+                container.style.marginTop = '90px';
+                container.style.zIndex = '999999';
                 container.id = 'toastContainer';
                 document.body.appendChild(container);
             }
             var toast = document.createElement('div');
-            toast.className = 'toast toast--' + type;
-            toast.innerHTML = '<span>' + message + '</span>' +
-                '<button class="toast-close" aria-label="Close">&#10005;</button>';
+            var bgClass = 'bg-success';
+            if (type === 'error' || type === 'danger') {
+                bgClass = 'bg-danger';
+            } else if (type === 'info') {
+                bgClass = 'bg-info';
+            } else if (type === 'warning') {
+                bgClass = 'bg-warning text-dark';
+            }
+            toast.className = 'toast fade align-items-center text-white ' + bgClass + ' border-0';
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
+            toast.setAttribute('aria-atomic', 'true');
+            toast.innerHTML = 
+                '<div class="d-flex">' +
+                '    <div class="toast-body">' + message + '</div>' +
+                '    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>' +
+                '</div>';
             container.appendChild(toast);
-            requestAnimationFrame(function () {
-                toast.classList.add('show');
+            var bsToast = new bootstrap.Toast(toast, { delay: 3500 });
+            bsToast.show();
+            toast.addEventListener('hidden.bs.toast', function () {
+                toast.remove();
             });
-            toast.querySelector('.toast-close').addEventListener('click', function () {
-                toast.classList.remove('show');
-                setTimeout(function () { toast.remove(); }, 300);
-            });
-            setTimeout(function () {
-                toast.classList.remove('show');
-                setTimeout(function () { toast.remove(); }, 300);
-            }, 3500);
         }
     };
 
@@ -523,39 +545,38 @@
             var gradient = this.getCategoryGradient(product.category);
             var icon = this.getCategoryIcon(product.category);
             var badgeHTML = '';
-            if (product.badge === 'sale') {
-                badgeHTML = '<span class="product-card-badge product-card-badge--sale">Sale</span>';
-            } else if (product.badge === 'new' || product.isNew) {
-                badgeHTML = '<span class="product-card-badge product-card-badge--new">New</span>';
+            if (product.badge) {
+                var badgeText = product.badge === 'bestseller' ? 'Bestseller' : product.badge === 'new' ? 'New' : product.badge === 'sale' ? 'Sale' : product.badge === 'eco' ? 'Eco Pick' : product.badge;
+                badgeHTML = '<span class="badge badge-' + product.badge + ' product-card-badge">' + badgeText + '</span>';
             }
-            var priceHTML = '<span class="price-current">$' + product.price.toFixed(2) + '</span>';
+            var rating = product.rating || 5;
+            var stars = this.getStarsHTML(rating);
+            var priceHTML = '<span class="product-card-current-price">$' + product.price.toFixed(2) + '</span>';
             if (product.originalPrice) {
-                priceHTML += '<span class="price-original">$' + product.originalPrice.toFixed(2) + '</span>';
+                priceHTML += ' <span class="original-price">$' + product.originalPrice.toFixed(2) + '</span>';
             }
 
-            return '<article class="product-card" data-id="' + product.id + '">' +
-                '<div class="product-card-img" style="background:' + gradient + '">' +
-                icon +
-                badgeHTML +
-                '<button class="product-card-wishlist" aria-label="Add to wishlist"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>' +
+            return '<div class="product-card" data-category="' + product.category + '">' +
+                '<a href="product-detail.html?id=' + product.id + '">' +
+                '    <div class="product-card-img" style="background: ' + gradient + '">' +
+                '        <div class="product-card-icon">' + icon + '</div>' +
+                '        ' + badgeHTML +
+                '    </div>' +
+                '    <div class="product-card-info">' +
+                '        <span class="product-card-category">' + this.getCategoryName(product.category) + '</span>' +
+                '        <h3 class="product-card-title">' + product.name + '</h3>' +
+                '        <div class="product-card-rating">' + stars + ' <span>(' + (product.reviewCount || product.reviews || 0) + ')</span></div>' +
+                '        <div class="product-card-price">' + priceHTML + '</div>' +
+                '    </div>' +
+                '</a>' +
+                '<div class="product-card-actions">' +
+                '    <button class="btn btn-primary btn-sm add-to-cart-btn" data-id="' + product.id + '">Add to Cart</button>' +
                 '</div>' +
-                '<div class="product-card-body">' +
-                '<div class="product-card-category">' + this.getCategoryName(product.category) + '</div>' +
-                '<h3 class="product-card-name"><a href="product-detail.html?id=' + product.id + '">' + product.name + '</a></h3>' +
-                '<div class="product-card-rating">' +
-                this.getStarsHTML(product.rating) +
-                '<span class="rating-count">(' + product.reviews + ')</span>' +
-                '</div>' +
-                '<div class="product-card-footer">' +
-                '<div class="product-card-price">' + priceHTML + '</div>' +
-                '<button class="product-card-cart-btn" data-product-id="' + product.id + '" aria-label="Add to cart">' +
-                '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>' +
-                '</button>' +
-                '</div>' +
-                '</div>' +
-                '</article>';
+                '</div>';
         }
     };
+
+    window.generateStars = window.SunvozHelpers.getStarsHTML.bind(window.SunvozHelpers);
 
     /* ========== Global Add-to-Cart delegation ========== */
     document.addEventListener('click', function (e) {
@@ -679,9 +700,6 @@
                     badge.classList.remove('bounce');
                     void badge.offsetWidth; // trigger reflow
                     badge.classList.add('bounce');
-                }
-                if (window.location.pathname.indexOf('cart.html') === -1) {
-                    self.open();
                 }
             });
 

@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        cartGrid.style.display = 'grid';
+        cartGrid.style.display = 'flex';
         emptyCartState.style.display = 'none';
         cartItemsList.innerHTML = '';
 
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     '</div>' +
                     '<div class="cart-item-details">' +
                         '<h3 class="cart-item-name"><a href="product-detail.html?id=' + p.id + '">' + p.name + '</a></h3>' +
-                        '<p class="cart-item-meta">Chất liệu: ' + (p.materials || 'Thân thiện với môi trường') + '</p>' +
+                        '<p class="cart-item-meta">Material: ' + (p.materials || 'Eco-friendly') + '</p>' +
                         '<div class="quantity-adjuster">' +
                             '<button class="qty-btn dec-btn" aria-label="Decrease quantity" data-id="' + p.id + '">-</button>' +
                             '<input type="number" class="qty-input" value="' + item.qty + '" min="1" data-id="' + p.id + '" aria-label="Quantity">' +
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     window.SunvozCart.removeItem(pid);
                     renderCart();
                     if (window.SunvozToast) {
-                        window.SunvozToast.show('Đã xóa sản phẩm khỏi giỏ hàng 🗑️', 'info');
+                        window.SunvozToast.show('Removed product from cart 🗑️', 'info');
                     }
                 }
             });
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 window.SunvozCart.removeItem(pid);
                 renderCart();
                 if (window.SunvozToast) {
-                    window.SunvozToast.show('Đã xóa sản phẩm khỏi giỏ hàng 🗑️', 'info');
+                    window.SunvozToast.show('Removed product from cart 🗑️', 'info');
                 }
             });
         });
@@ -190,24 +190,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Shipping Progress
         if (subtotal >= SHIPPING_FREE_THRESHOLD) {
-            shippingProgressText.innerHTML = 'Chúc mừng! Bạn đã đủ điều kiện được <strong>Miễn phí vận chuyển!</strong> 🌿';
+            shippingProgressText.innerHTML = 'Congratulations! You\'ve unlocked <strong>FREE Shipping!</strong> 🌿';
             shippingProgressFill.style.width = '100%';
             var shipping = 0;
         } else {
             var diff = SHIPPING_FREE_THRESHOLD - subtotal;
-            shippingProgressText.innerHTML = 'Mua thêm <strong>$' + diff.toFixed(2) + '</strong> để được Miễn phí vận chuyển!';
+            shippingProgressText.innerHTML = 'Add <strong>$' + diff.toFixed(2) + '</strong> more for FREE Shipping!';
             var percentage = Math.min((subtotal / SHIPPING_FREE_THRESHOLD) * 100, 100);
             shippingProgressFill.style.width = percentage + '%';
             var shipping = SHIPPING_FLAT_RATE;
         }
 
-        shippingEl.textContent = shipping === 0 ? 'Miễn phí' : '$' + shipping.toFixed(2);
+        shippingEl.textContent = shipping === 0 ? 'FREE' : '$' + shipping.toFixed(2);
 
         // Discount
         var discount = 0;
         if (activeDiscountPercent > 0) {
             discount = subtotal * activeDiscountPercent;
-            discountLabel.textContent = 'Giảm giá (' + activePromoCode + ' -' + (activeDiscountPercent * 100) + '%)';
+            discountLabel.textContent = 'Discount (' + activePromoCode + ' -' + (activeDiscountPercent * 100) + '%)';
             summaryDiscount.textContent = '-$' + discount.toFixed(2);
             discountRow.style.display = 'flex';
         } else {
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Update the form CTA text
         var totalCtaVal = Math.max(total, 0).toFixed(2);
-        placeOrderBtn.textContent = 'Đặt hàng ($' + totalCtaVal + ')';
+        placeOrderBtn.textContent = 'Place Order ($' + totalCtaVal + ')';
     }
 
     /* ================= Promo Form Submit ================= */
@@ -237,14 +237,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 activePromoCode = code;
                 activeDiscountPercent = PROMO_CODES[code];
                 promoMessage.className = 'promo-message mt-2 success';
-                promoMessage.textContent = 'Áp dụng mã giảm giá ' + code + ' thành công!';
+                promoMessage.textContent = 'Applied promo code ' + code + ' successfully!';
                 calculateSummary();
                 if (window.SunvozToast) {
-                    window.SunvozToast.show('Đã áp dụng mã giảm giá! 🏷️', 'success');
+                    window.SunvozToast.show('Promo code applied! 🏷️', 'success');
                 }
             } else {
                 promoMessage.className = 'promo-message mt-2 error';
-                promoMessage.textContent = 'Mã giảm giá không hợp lệ. Hãy thử NATURE10 hoặc SUNVOZ20.';
+                promoMessage.textContent = 'Invalid promo code. Try NATURE10 or SUNVOZ20.';
             }
         });
     }
@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (!isFormValid) {
                 if (window.SunvozToast) {
-                    window.SunvozToast.show('Vui lòng nhập đầy đủ và chính xác các thông tin thanh toán & nhận hàng.', 'error');
+                    window.SunvozToast.show('Please fill in all shipping & payment fields correctly.', 'error');
                 }
                 // Scroll to the first error
                 var firstErr = checkoutForm.querySelector('.form-input.is-invalid');
@@ -388,11 +388,12 @@ document.addEventListener('DOMContentLoaded', function () {
             // Infill Success modal details
             successOrderId.textContent = orderId;
             successOrderEmail.textContent = emailVal;
-            successOrderCount.textContent = cartItemsCount + ' sản phẩm';
+            successOrderCount.textContent = cartItemsCount + (cartItemsCount === 1 ? ' item' : ' items');
             successOrderTotal.textContent = cartTotalVal;
 
             // Show success overlay modal
-            successModalOverlay.classList.add('show');
+            var modal = bootstrap.Modal.getOrCreateInstance(successModalOverlay);
+            modal.show();
 
             // Clear the actual cart from localStorage
             window.SunvozCart.clear();
@@ -402,7 +403,8 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ================= Modal Close & Shop Redirection ================= */
     if (successCloseBtn) {
         successCloseBtn.addEventListener('click', function () {
-            successModalOverlay.classList.remove('show');
+            var modal = bootstrap.Modal.getOrCreateInstance(successModalOverlay);
+            modal.hide();
             window.location.href = 'products.html';
         });
     }

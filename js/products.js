@@ -220,10 +220,14 @@
             productGrid.style.display = 'none';
             emptyState.style.display = 'block';
         } else {
-            productGrid.style.display = 'grid';
+            productGrid.style.display = '';
             emptyState.style.display = 'none';
             
             productGrid.innerHTML = filtered.map((product, index) => {
+                if (window.SunvozHelpers && typeof window.SunvozHelpers.renderProductCard === 'function') {
+                    var cardHTML = window.SunvozHelpers.renderProductCard(product);
+                    return `<div class="col animate-on-scroll" style="animation-delay: ${index * 50}ms">${cardHTML}</div>`;
+                }
                 var gradient = categoryGradients[product.category] || categoryGradients.kitchen;
                 var icon = productIconsByCat[product.category] || productIconsByCat.kitchen;
                 var catName = categoryNames[product.category] || product.category;
@@ -241,24 +245,26 @@
 
                 // Add delay for stagger animation
                 return `
-                <div class="product-card animate-on-scroll" data-category="${product.category}" style="animation-delay: ${index * 50}ms">
-                    <a href="product-detail.html?id=${product.id}">
-                        <div class="product-card-img" style="background: ${gradient}">
-                            <div class="product-card-icon">${icon}</div>
-                            ${badgeHtml}
-                        </div>
-                        <div class="product-card-info">
-                            <span class="product-card-category">${catName}</span>
-                            <h3 class="product-card-title">${product.name}</h3>
-                            <div class="product-card-rating">
-                                <div class="stars">${stars}</div>
-                                <span class="review-count">(${product.reviewCount || 100})</span>
+                <div class="col animate-on-scroll" style="animation-delay: ${index * 50}ms">
+                    <div class="product-card" data-category="${product.category}">
+                        <a href="product-detail.html?id=${product.id}">
+                            <div class="product-card-img" style="background: ${gradient}">
+                                <div class="product-card-icon">${icon}</div>
+                                ${badgeHtml}
                             </div>
-                            <div class="product-card-price">${priceHtml}</div>
+                            <div class="product-card-info">
+                                <span class="product-card-category">${catName}</span>
+                                <h3 class="product-card-title">${product.name}</h3>
+                                <div class="product-card-rating">
+                                    <div class="stars">${stars}</div>
+                                    <span class="review-count">(${product.reviewCount || 100})</span>
+                                </div>
+                                <div class="product-card-price">${priceHtml}</div>
+                            </div>
+                        </a>
+                        <div class="product-card-actions">
+                            <button class="btn btn-primary btn-sm add-to-cart-btn" data-id="${product.id}">Add to Cart</button>
                         </div>
-                    </a>
-                    <div class="product-card-actions">
-                        <button class="btn btn-primary btn-sm add-to-cart-btn" data-id="${product.id}">Add to Cart</button>
                     </div>
                 </div>`;
             }).join('');

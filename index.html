@@ -8,9 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/home.css?v=1.0.1">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='8' fill='%23C4A35A'/></svg>">
 </head>
 <body>
@@ -98,76 +99,9 @@
             </div>
         </div>
         <div class="hero-visual" aria-hidden="true">
-            <div class="hero-svg-wrapper">
-                <!-- Main circular frame -->
-                <svg class="hero-art" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Outer glow ring -->
-                    <circle cx="250" cy="250" r="230" stroke="#D8F3DC" stroke-width="1" opacity="0.5"/>
-                    <circle cx="250" cy="250" r="210" stroke="#A7C4A0" stroke-width="1.5" opacity="0.3" stroke-dasharray="8 6"/>
-
-                    <!-- Main circle frame -->
-                    <circle cx="250" cy="250" r="190" fill="#FAFAF8" stroke="#2D6A4F" stroke-width="2" opacity="0.15"/>
-                    <circle cx="250" cy="250" r="190" fill="url(#heroGrad)" opacity="0.5"/>
-
-                    <!-- Sun element -->
-                    <circle cx="250" cy="180" r="45" fill="#C4A35A" opacity="0.2"/>
-                    <circle cx="250" cy="180" r="30" fill="#C4A35A" opacity="0.35"/>
-                    <circle cx="250" cy="180" r="18" fill="#C4A35A" opacity="0.6"/>
-                    <!-- Sun rays -->
-                    <g stroke="#C4A35A" stroke-width="1.5" stroke-linecap="round" opacity="0.4">
-                        <line x1="250" y1="128" x2="250" y2="140"/>
-                        <line x1="250" y1="220" x2="250" y2="232"/>
-                        <line x1="198" y1="180" x2="210" y2="180"/>
-                        <line x1="290" y1="180" x2="302" y2="180"/>
-                        <line x1="213" y1="143" x2="221" y2="151"/>
-                        <line x1="279" y1="209" x2="287" y2="217"/>
-                        <line x1="213" y1="217" x2="221" y2="209"/>
-                        <line x1="279" y1="151" x2="287" y2="143"/>
-                    </g>
-
-                    <!-- Left large leaf -->
-                    <path d="M120 350C120 350 160 220 200 200C240 180 250 250 250 250C250 250 200 260 160 300C120 340 120 350 120 350Z" fill="#2D6A4F" opacity="0.12"/>
-                    <path d="M130 340C130 340 165 230 200 210" stroke="#2D6A4F" stroke-width="1.5" opacity="0.2" fill="none"/>
-
-                    <!-- Right large leaf -->
-                    <path d="M380 350C380 350 340 220 300 200C260 180 250 250 250 250C250 250 300 260 340 300C380 340 380 350 380 350Z" fill="#52B788" opacity="0.12"/>
-                    <path d="M370 340C370 340 335 230 300 210" stroke="#52B788" stroke-width="1.5" opacity="0.2" fill="none"/>
-
-                    <!-- Center plant / stem -->
-                    <path d="M250 250L250 400" stroke="#2D6A4F" stroke-width="2" opacity="0.3"/>
-                    <path d="M250 280C250 280 230 260 215 270C200 280 220 300 250 280Z" fill="#52B788" opacity="0.25"/>
-                    <path d="M250 310C250 310 270 290 285 300C300 310 280 330 250 310Z" fill="#2D6A4F" opacity="0.2"/>
-                    <path d="M250 340C250 340 230 320 215 330C200 340 220 360 250 340Z" fill="#A7C4A0" opacity="0.3"/>
-
-                    <!-- Small decorative leaves top-left -->
-                    <path d="M110 150C110 150 130 120 150 130C170 140 150 165 110 150Z" fill="#D8F3DC" opacity="0.5"/>
-                    <!-- Small decorative leaves top-right -->
-                    <path d="M390 150C390 150 370 120 350 130C330 140 350 165 390 150Z" fill="#D8F3DC" opacity="0.5"/>
-
-                    <!-- Bottom decorative arc -->
-                    <path d="M140 400Q250 440 360 400" stroke="#A7C4A0" stroke-width="2" fill="none" opacity="0.3" stroke-linecap="round"/>
-                    <path d="M160 415Q250 445 340 415" stroke="#D8F3DC" stroke-width="1.5" fill="none" opacity="0.4" stroke-linecap="round"/>
-
-                    <!-- Scattered dots / seeds -->
-                    <circle cx="170" cy="170" r="3" fill="#C4A35A" opacity="0.3"/>
-                    <circle cx="330" cy="170" r="3" fill="#C4A35A" opacity="0.3"/>
-                    <circle cx="150" cy="280" r="2" fill="#52B788" opacity="0.4"/>
-                    <circle cx="350" cy="280" r="2" fill="#52B788" opacity="0.4"/>
-                    <circle cx="200" cy="380" r="2.5" fill="#A7C4A0" opacity="0.35"/>
-                    <circle cx="300" cy="380" r="2.5" fill="#A7C4A0" opacity="0.35"/>
-                    <circle cx="190" cy="130" r="2" fill="#D8F3DC" opacity="0.6"/>
-                    <circle cx="310" cy="130" r="2" fill="#D8F3DC" opacity="0.6"/>
-
-                    <!-- Inner decorative ring -->
-                    <circle cx="250" cy="250" r="120" stroke="#A7C4A0" stroke-width="0.75" opacity="0.2" stroke-dasharray="3 5"/>
-
-                    <defs>
-                        <radialGradient id="heroGrad" cx="50%" cy="40%" r="50%">
-                            <stop offset="0%" stop-color="#D8F3DC" stop-opacity="0.4"/>
-                            <stop offset="100%" stop-color="#FAFAF8" stop-opacity="0"/>
-                        </radialGradient>
-                    </defs>
-                </svg>
+            <div class="hero-svg-wrapper" style="display: flex; align-items: center; justify-content: center;">
+                <!-- Hero Banner Image -->
+                <img src="assets/images/hero-banner.png" alt="Sunvoz Nature Home Banner" class="hero-art" style="width: 100%; height: auto; border-radius: var(--radius-lg); object-fit: cover; box-shadow: var(--shadow-lg);">
                 <!-- Orbiting ring animation -->
                 <div class="hero-orbit-ring"></div>
             </div>
@@ -232,7 +166,7 @@
             <h2 class="section-title">Featured Collection</h2>
             <p class="section-subtitle">Handpicked favorites for your home</p>
         </div>
-        <div class="products-grid" id="featuredGrid">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="featuredGrid">
             <!-- Rendered dynamically by JS -->
         </div>
         <div class="section-cta animate-on-scroll">
@@ -347,7 +281,7 @@
             <h2 class="section-title">What Our Customers Say</h2>
             <p class="section-subtitle">Real stories from our community of mindful homemakers</p>
         </div>
-        <div class="testimonials-grid" id="testimonialsGrid">
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="testimonialsGrid">
             <!-- Rendered dynamically by JS -->
         </div>
     </div>
@@ -360,7 +294,7 @@
             <h2 class="section-title">From Our Blog</h2>
             <p class="section-subtitle">Tips, stories, and inspiration for sustainable living</p>
         </div>
-        <div class="blog-preview-grid" id="blogPreviewGrid">
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="blogPreviewGrid">
             <!-- Rendered dynamically by JS -->
         </div>
         <div class="section-cta animate-on-scroll">
@@ -435,7 +369,8 @@
 
 <div class="toast-container" id="toastContainer"></div>
 
-<script src="js/data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 <script>
 (function() {
@@ -504,6 +439,11 @@
 
     // ======== RENDER: Product Card ========
     function createProductCard(product) {
+        if (window.SunvozHelpers && typeof window.SunvozHelpers.renderProductCard === 'function') {
+            var cardHTML = window.SunvozHelpers.renderProductCard(product);
+            // Keep homepage animate-on-scroll style
+            return cardHTML.replace('class="product-card"', 'class="product-card animate-on-scroll"');
+        }
         var gradient = categoryGradients[product.category] || categoryGradients.kitchen;
         var icon = productIcons[product.category] || productIcons.kitchen;
         var catName = categoryNames[product.category] || product.category;
@@ -549,7 +489,9 @@
 
         var featured = window.PRODUCTS.filter(function(p) { return p.badge === 'bestseller'; }).slice(0, 4);
         if (featured.length === 0) featured = window.PRODUCTS.slice(0, 4);
-        grid.innerHTML = featured.map(createProductCard).join('');
+        grid.innerHTML = featured.map(function(product) {
+            return '<div class="col">' + createProductCard(product) + '</div>';
+        }).join('');
     }
 
     // ======== RENDER: New Arrivals ========
@@ -576,7 +518,8 @@
             var colors = ['#2D6A4F', '#52B788', '#C4A35A', '#A7C4A0'];
             var bgColor = colors[Math.floor(Math.random() * colors.length)];
 
-            return '<div class="testimonial-card animate-on-scroll">' +
+            return '<div class="col">' +
+                '<div class="testimonial-card animate-on-scroll h-100">' +
                 '<div class="testimonial-quote">' +
                     '<svg width="32" height="32" viewBox="0 0 24 24" fill="var(--accent-pale)" opacity="0.8"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>' +
                 '</div>' +
@@ -589,6 +532,7 @@
                     '</div>' +
                     '<div class="testimonial-rating">' + stars + '</div>' +
                 '</div>' +
+                '</div>' +
             '</div>';
         }).join('');
     }
@@ -600,7 +544,8 @@
 
         grid.innerHTML = window.BLOG_POSTS.slice(0, 3).map(function(post) {
             var gradient = blogGradients[post.category] || 'linear-gradient(135deg, #D8F3DC 0%, #E8F5E9 100%)';
-            return '<article class="blog-card animate-on-scroll">' +
+            return '<div class="col">' +
+                '<article class="blog-card animate-on-scroll h-100">' +
                 '<a href="blog-post.html?id=' + post.id + '">' +
                     '<div class="blog-card-img" style="background: ' + gradient + '">' +
                         '<span class="badge badge-category">' + post.category + '</span>' +
@@ -612,7 +557,8 @@
                         '<span class="blog-card-link">Read More →</span>' +
                     '</div>' +
                 '</a>' +
-            '</article>';
+                '</article>' +
+            '</div>';
         }).join('');
     }
 
@@ -658,13 +604,13 @@
             var card = track.querySelector('.product-card');
             var gap = parseFloat(window.getComputedStyle(track).gap) || 24;
             var amount = card ? card.offsetWidth + gap : 320;
-            track.scrollBy({ left: -amount, behavior: 'smooth' });
+            track.scrollLeft -= amount;
         });
         rightBtn.addEventListener('click', function() {
             var card = track.querySelector('.product-card');
             var gap = parseFloat(window.getComputedStyle(track).gap) || 24;
             var amount = card ? card.offsetWidth + gap : 320;
-            track.scrollBy({ left: amount, behavior: 'smooth' });
+            track.scrollLeft += amount;
         });
 
         // Update arrow visibility

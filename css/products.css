@@ -91,6 +91,7 @@
 
 .filter-search {
     flex: 1 1 300px;
+    max-width: 320px;
     position: relative;
     display: flex;
     align-items: center;
@@ -228,6 +229,9 @@
     .filter-bar {
         flex-direction: column;
         align-items: stretch;
+    }
+    .filter-search {
+        flex: none;
     }
     .filter-dropdowns {
         display: grid;

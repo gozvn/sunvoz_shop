@@ -463,6 +463,10 @@
         }
 
         relatedGrid.innerHTML = related.map((p, idx) => {
+            if (window.SunvozHelpers && typeof window.SunvozHelpers.renderProductCard === 'function') {
+                var cardHTML = window.SunvozHelpers.renderProductCard(p);
+                return `<div class="col animate-on-scroll" style="animation-delay: ${idx * 50}ms">${cardHTML}</div>`;
+            }
             var gradient = categoryGradients[p.category] || categoryGradients.kitchen;
             // custom icons or categories fallback
             var catName = categoryNames[p.category] || p.category;
@@ -489,24 +493,26 @@
             var icon = iconMap[p.category] || iconMap.kitchen;
 
             return `
-            <div class="product-card animate-on-scroll" data-category="${p.category}" style="animation-delay: ${idx * 50}ms">
-                <a href="product-detail.html?id=${p.id}">
-                    <div class="product-card-img" style="background: ${gradient[0]}">
-                        <div class="product-card-icon">${icon}</div>
-                        ${badgeHtml}
-                    </div>
-                    <div class="product-card-info">
-                        <span class="product-card-category">${catName}</span>
-                        <h3 class="product-card-title">${p.name}</h3>
-                        <div class="product-card-rating">
-                            <div class="stars">${stars}</div>
-                            <span class="review-count">(${p.reviewCount || 100})</span>
+            <div class="col animate-on-scroll" style="animation-delay: ${idx * 50}ms">
+                <div class="product-card" data-category="${p.category}">
+                    <a href="product-detail.html?id=${p.id}">
+                        <div class="product-card-img" style="background: ${gradient[0]}">
+                            <div class="product-card-icon">${icon}</div>
+                            ${badgeHtml}
                         </div>
-                        <div class="product-card-price">${priceHtml}</div>
+                        <div class="product-card-info">
+                            <span class="product-card-category">${catName}</span>
+                            <h3 class="product-card-title">${p.name}</h3>
+                            <div class="product-card-rating">
+                                <div class="stars">${stars}</div>
+                                <span class="review-count">(${p.reviewCount || 100})</span>
+                            </div>
+                            <div class="product-card-price">${priceHtml}</div>
+                        </div>
+                    </a>
+                    <div class="product-card-actions">
+                        <button class="btn btn-primary btn-sm add-to-cart-btn" data-id="${p.id}">Add to Cart</button>
                     </div>
-                </a>
-                <div class="product-card-actions">
-                    <button class="btn btn-primary btn-sm add-to-cart-btn" data-id="${p.id}">Add to Cart</button>
                 </div>
             </div>`;
         }).join('');
